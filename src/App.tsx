@@ -146,7 +146,7 @@ const Navbar = ({ setNavVis, handleNavClick, navVis, language }) => {
       transition={{duration: 0.4, ease: 'easeInOut'}}
     >
       <button onClick={() => setNavVis(false)}>
-        <Close />
+        <Close className='text-white'/>
       </button>
       <div className='flex flex-col gap-8 w-full text-white'>
         {sections[0].items.map((e, i) => (
