@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { useMediaQuery } from 'react-responsive'
 
 import Hamburger from './assets/icon-hamburger.svg?react'
 import Close from './assets/icon-close.svg?react'
@@ -10,6 +11,7 @@ import camp2 from './assets/camp2.webp'
 import camp3 from './assets/camp3.webp'
 import camp4 from './assets/camp4.webp'
 import camp5 from './assets/camp5.webp'
+import camp6 from './assets/camp6.webp'
 
 import flagSK from './assets/flags/sk.webp'
 import flagHU from './assets/flags/hu.webp'
@@ -24,11 +26,11 @@ const logoText = 'YaCHT CaMPING'
 const tableData = [
   {
     items: [
-      { service: 'xyz', price: '10' },
-      { service: 'xyz', price: '12' },
-      { service: 'xyz', price: '15' },
-      { service: 'xyz', price: '20' },
-      { service: 'xyz', price: '25' }
+      { service: 'xyz1', price: '10' },
+      { service: 'xyz2', price: '12' },
+      { service: 'xyz3', price: '15' },
+      { service: 'xyz4', price: '20' },
+      { service: 'xyz5', price: '25' }
     ]
   }
 ]
@@ -79,16 +81,18 @@ const images = [
   {img: camp3, alt: 'nieco'},
   {img: camp4, alt: 'nieco'},
   {img: camp5, alt: 'nieco'},
+  {img: camp6, alt: 'nieco'},
   {img: campPlaceholder, alt: 'nieco'},
   {img: camp2, alt: 'nieco'},
   {img: camp3, alt: 'nieco'},
   {img: camp4, alt: 'nieco'},
-  {img: camp5, alt: 'nieco'}
+  {img: camp5, alt: 'nieco'},
+  {img: camp6, alt: 'nieco'},
 ]
 
-const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, handleLanguageSelect }) => {
+const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, handleLanguageSelect, isMobile, sections, handleNavClick }) => {
   return (
-    <header className='sticky top-0 bg-white z-100 w-full flex flex-row items-center justify-between p-4'>
+    <header className='sticky top-0 bg-white z-100 w-full flex flex-row items-center justify-between p-4 lg:px-8'>
       <div className='font-["Big_Shoulders"] font-bold -skew-x-7 text-xl'>
         {logoText.split('').map((e, i) => (
           <span key={i} className={`m-0 ${e.toLowerCase() === 'a' ? 'text-blue-800 lowercase text-lg' : 'text-black'}`}>
@@ -96,10 +100,10 @@ const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, 
           </span>
         ))}
       </div>
-      <div className='flex flex-row items-center gap-10 relative'>
-        <button className='flex flex-row items-center gap-1.5 py-1 px-2' onClick={() => setLanguageSelectVis(p => p == true ? false : true)}>
+      <div className='flex flex-row items-center gap-10 lg:gap-20 relative'>
+        <button className='flex flex-row items-center gap-1.5 py-1 px-2 cursor-pointer group' onClick={() => setLanguageSelectVis(p => p == true ? false : true)}>
           <img src={languageDict[language].flag} alt="" className='w-8'/>
-          <p>{languageDict[language].language}</p>
+          <p className='group-hover:text-blue-800 transition'>{languageDict[language].language}</p>
           <ChevronDown />
         </button>
         <AnimatePresence>
@@ -110,34 +114,32 @@ const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, 
               exit={{ height: 0, opacity: 0 }}
             >
               {Object.keys(languageDict).filter(p => p !== language).map((e, i) => (
-                <button className='flex flex-row items-center gap-1.5 py-1 px-2 relative' onClick={() => handleLanguageSelect(e)}>
+                <button className='flex flex-row items-center gap-1.5 py-1 px-2 relative group cursor-pointer' key={e} onClick={() => handleLanguageSelect(e)}>
                   <img src={languageDict[e].flag} alt="" className='w-8'/>
-                  <p>{languageDict[e].language}</p>
+                  <p className='group-hover:text-blue-800 transition'>{languageDict[e].language}</p>
                 </button>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
-        <button onClick={() => setNavVis(true)}>
-          <Hamburger />
-        </button>
+        {isMobile && (
+          <button onClick={() => setNavVis(true)}>
+            <Hamburger />
+          </button>
+        )}
+        {!(isMobile) && (
+          <div className='flex flex-row gap-12 w-full text-black'>
+            {sections[0].items.map((e, i) => (
+              <a href={'#' + e.id} key={i} onClick={() => handleNavClick()} className='hover:text-blue-800 transition'>{e.name}</a>
+            ))}
+          </div>
+        )}
       </div>
     </header>
   )
 }
 
-const Navbar = ({ setNavVis, handleNavClick, navVis, language }) => {
-  const sections = [
-    {
-      items: [
-        {id: 'hero', name: languageText[language].home},
-        {id: 'showcase', name: languageText[language].showcase.header},
-        {id: 'priceList', name: languageText[language].priceList.header},
-        {id: 'footer', name: languageText[language].footer.header}
-      ]
-    }
-  ]
-
+const Navbar = ({ setNavVis, handleNavClick, navVis, sections }) => {
   return (
     <motion.div className='fixed bg-black/95 top-0 bottom-0 right-0 left-40 z-101 flex flex-col p-6 px-4 pl-6 items-end gap-16' key={navVis}
       initial={{ x: '100%' }}
@@ -150,7 +152,7 @@ const Navbar = ({ setNavVis, handleNavClick, navVis, language }) => {
       </button>
       <div className='flex flex-col gap-8 w-full text-white'>
         {sections[0].items.map((e, i) => (
-          <a href={'#' + e.id} onClick={() => handleNavClick()}>{e.name}</a>
+          <a href={'#' + e.id} key={i} onClick={() => handleNavClick()}>{e.name}</a>
         ))}
       </div>
     </motion.div>
@@ -159,24 +161,23 @@ const Navbar = ({ setNavVis, handleNavClick, navVis, language }) => {
 
 const Hero = ({ language }) => {
   return (
-    <section className='relative w-full h-[312px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 scroll-mt-[64px]' id='hero'>
+    <section className='relative w-full h-[312px] lg:h-[504px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 lg:gap-3 scroll-mt-[64px]' id='hero'>
       <div className='bg-blue-800/66 inset-0 absolute -z-1'></div>
       <img src={campPlaceholder} alt="" className='absolute inset-0 -z-2 w-full h-full object-cover'/>
-      <h1 className='font-bold text-lg'>{languageText[language].hero.header}</h1>
-      <p className='text-sm font-light'>{languageText[language].hero.paragraph}</p>
+      <h1 className='font-bold text-lg lg:text-4xl'>{languageText[language].hero.header}</h1>
+      <p className='text-sm lg:text-xl font-light'>{languageText[language].hero.paragraph}</p>
     </section>
   )
 }
 
 const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex, handleLightboxOpen }) => {
   return (
-    <section className='px-4 py-20 scroll-mt-[64px] text-center' id='showcase'>
-      <h2 className='font-bold text-[2.5rem] mb-10'>{languageText[language].showcase.header}</h2>
-      <div className='grid grid-cols-2 grid-rows-5 gap-y-8 gap-x-4'>
+    <section className='px-4 lg:px-12 py-20 scroll-mt-[64px] text-center' id='showcase'>
+      <h2 className='font-bold text-[2.5rem] lg:text-[3.2rem] mb-10'>{languageText[language].showcase.header}</h2>
+      <div className='grid grid-cols-2 grid-rows-5 lg:grid-cols-3 lg:grid-rows-4 xl:grid-cols-4 xl:grid-rows-3 gap-y-8 gap-x-4'>
         {images.map((e, i) => {
-          console.log(i)
           return (
-            <span className='relative'>
+            <span className='relative rounded-sm overflow-hidden' key={i}>
               <button className='absolute inset-0 bg-blue-800/33 opacity-0 hover:opacity-100 cursor-pointer transition focus:opacity-100 focus:outline-none' onClick={() =>  handleLightboxOpen(i)}></button>
               <img src={e.img} alt="" className='w-full h-full object-cover'/>  
             </span>
@@ -189,15 +190,15 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <div className='w-full flex flex-row justify-end pr-2'>
+              <div className='w-full flex flex-row justify-end pr-2 lg:text-lg'>
                 <button onClick={() => setLightboxVis(false)} className='bg-zinc-700 p-2 text-zinc-400 flex justify-center items-center rounded-full hover:text-blue-400 transition cursor-pointer'>
                   <Close />
                 </button>
               </div>
-              <div className='h-[228px]'>
+              <div className='h-[228px] lg:h-[368px] rounded-md overflow-hidden'>
                 <img src={images[imgIndex].img} alt="" className='w-full h-full object-cover'/>
               </div>
-              <div className='w-full flex flex-row text-zinc-400 items-center justify-center gap-4'>
+              <div className='w-full flex flex-row text-zinc-400 items-center justify-center gap-4 lg:gap-6 lg:text-lg'>
                 <button onClick={() => setImgIndex(p => p == 0 ? 9 : p-1)}>
                   <FontAwesomeIcon icon={faArrowLeft} className='p-1.5 py-2 bg-zinc-700 rounded-full hover:text-blue-400 transition cursor-pointer'/>
                 </button>
@@ -209,7 +210,7 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
           )}
         </AnimatePresence>
       </div>
-      <div className='flex justify-center pt-18'>
+      <div className='flex justify-center pt-18 lg:px-48'>
         <div className='relative w-full aspect-video'>
           <iframe 
             src="https://www.youtube.com/embed/NpEaa2P7qZI" 
@@ -230,18 +231,22 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
 const PriceList = ({ language }) => {
   return (
     <section className='py-12 pb-36 flex flex-col items-center scroll-mt-[64px]' id='priceList'>
-      <h2 className='font-bold text-[2.5rem] mb-10'>{languageText[language].priceList.header}</h2>
-      <table className='table-auto border-collapse border'>
-        <tr>
-          <th className='border py-3 p-4 pr-16'>{languageText[language].priceList.table.service}</th>
-          <th className='border py-3 p-4 pr-16'>{languageText[language].priceList.table.price}</th>
-        </tr>
-        {tableData[0].items.map((item) => (
+      <h2 className='font-bold text-[2.5rem] lg:text-[3.2rem] mb-10'>{languageText[language].priceList.header}</h2>
+      <table className='table-auto border-collapse border lg:text-xl'>
+        <thead>
           <tr>
-            <td className='border py-3 p-4'>{item.service}</td>
-            <td className='border py-3 p-4'>{item.price}</td>
+            <th className='border py-3 p-4 pr-16'>{languageText[language].priceList.table.service}</th>
+            <th className='border py-3 p-4 pr-16'>{languageText[language].priceList.table.price}</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {tableData[0].items.map((item) => (
+            <tr key={item.service}>
+              <td className='border py-3 p-4'>{item.service}</td>
+              <td className='border py-3 p-4'>{item.price}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </section>
   )
@@ -249,28 +254,28 @@ const PriceList = ({ language }) => {
 
 const Footer = ({ language }) => {
   return (
-    <footer className='bg-blue-800 w-full py-12 pt-8 pb-8 px-6 flex flex-col gap-10 scroll-mt-[64px] text-center' id='footer'>
-      <h2 className='font-bold text-[2rem] text-white'>{languageText[language].footer.header}</h2>
-      <div className='flex flex-col gap-3 items-center'>
-        <span className='text-white flex flex-row items-center gap-2'>
-          <FontAwesomeIcon icon={faLocationDot}/>
-          <p>Chľaba 752</p>
-        </span>
-        <span className='text-white flex flex-row items-center gap-2'>
-          <FontAwesomeIcon icon={faPhone}/>
-          <p>+421 915 705 498</p>
-        </span>
-        <span className='text-white flex flex-row items-center gap-2'>
-          <FontAwesomeIcon icon={faEnvelope}/>
-          <p>yachtcamping1@gmail.com</p>
-        </span>
+    <footer className='bg-blue-800 w-full py-12 pt-8 pb-8 px-6 lg:px-18 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-10 scroll-mt-[64px] text-center' id='footer'>
+      <div className='flex flex-col gap-10 lg:text-center lg:items-center lg:justify-center'>
+        <h2 className='font-bold text-[2rem] lg:text-[2.6rem] text-white'>{languageText[language].footer.header}</h2>
+        <div className='flex flex-col gap-3 items-center lg:text-lg'>
+          <span className='text-white flex flex-row items-center gap-2'>
+            <FontAwesomeIcon icon={faLocationDot}/>
+            <p>Chľaba 752</p>
+          </span>
+          <span className='text-white flex flex-row items-center gap-2'>
+            <FontAwesomeIcon icon={faPhone}/>
+            <p>+421 915 705 498</p>
+          </span>
+          <span className='text-white flex flex-row items-center gap-2'>
+            <FontAwesomeIcon icon={faEnvelope}/>
+            <p>yachtcamping1@gmail.com</p>
+          </span>
+        </div>
       </div>
-      <div className='flex justify-center border-3 border-white'>
+      <div className='flex justify-center border-3 border-white lg:w-full lg:ml-24'>
         <div className='relative w-full aspect-video'>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21430.21820753928!2d18.803142899999997!3d47.8245335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476a890023d8af8b%3A0x130435ac01181746!2zQ2FtcCBDaMS-YWJhLUtvdsOhxI1vdg!5e0!3m2!1ssk!2ssk!4v1785247708408!5m2!1ssk!2ssk" 
-            width="600" 
-            height="450"  
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21430.21820753928!2d18.803142899999997!3d47.8245335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476a890023d8af8b%3A0x130435ac01181746!2zQ2FtcCBDaMS-YWJhLUtvdsOhxI1vdg!5e0!3m2!1ssk!2ssk!4v1785247708408!5m2!1ssk!2ssk"   
             loading="lazy" 
             referrerPolicy="strict-origin-when-cross-origin"
             className='absolute inset-0 w-full h-full'
@@ -287,7 +292,9 @@ function App() {
   const [languageSelectVis, setLanguageSelectVis] = useState(false)
   const [lightboxVis, setLightboxVis] = useState(false)
   const [imgIndex, setImgIndex] = useState(0)
- 
+
+  const isMobile = useMediaQuery({ maxWidth: 1023 })
+
   useEffect(() => {
     const localLanguage = window.localStorage.getItem("localLanguage");
     if (localLanguage) {
@@ -310,12 +317,23 @@ function App() {
     setImgIndex(index)
   }
 
+  const sections = [
+    {
+      items: [
+        {id: 'hero', name: languageText[language].home},
+        {id: 'showcase', name: languageText[language].showcase.header},
+        {id: 'priceList', name: languageText[language].priceList.header},
+        {id: 'footer', name: languageText[language].footer.header}
+      ]
+    }
+  ]
+
   return (
     <main className='min-w-[375px] font-[Asap]'>
-      <Header setNavVis={setNavVis} language={language} languageSelectVis={languageSelectVis} setLanguageSelectVis={setLanguageSelectVis} handleLanguageSelect={handleLanguageSelect} />
+      <Header setNavVis={setNavVis} language={language} languageSelectVis={languageSelectVis} setLanguageSelectVis={setLanguageSelectVis} handleLanguageSelect={handleLanguageSelect} isMobile={isMobile} sections={sections} handleNavClick={handleNavClick}/>
       <AnimatePresence>
         {navVis && (
-          <Navbar setNavVis={setNavVis} handleNavClick={handleNavClick} navVis={navVis} language={language}/>
+          <Navbar setNavVis={setNavVis} handleNavClick={handleNavClick} navVis={navVis} sections={sections}/>
         )}
       </AnimatePresence>
       <Hero language={language} />
