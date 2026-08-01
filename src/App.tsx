@@ -6,12 +6,22 @@ import Hamburger from './assets/icon-hamburger.svg?react'
 import Close from './assets/icon-close.svg?react'
 import ChevronDown from './assets/icon-chevron-down.svg?react'
 
-import campPlaceholder from './assets/camp1.webp'
-import camp2 from './assets/camp2.webp'
-import camp3 from './assets/camp3.webp'
-import camp4 from './assets/camp4.webp'
-import camp5 from './assets/camp5.webp'
-import camp6 from './assets/camp6.webp'
+import heroImg from './assets/camp_pictures/Snímka obrazovky 2026-08-01 184236.png'
+
+import camp1 from './assets/camp_pictures/IMG_4031.png'
+import camp2 from './assets/camp_pictures/IMG_4027.png'
+import camp3 from './assets/camp_pictures/IMG_4021.png'
+import camp4 from './assets/camp_pictures/IMG_4038.png'
+import camp5 from './assets/camp_pictures/Snímka obrazovky 2026-08-01 185301.png'
+import camp6 from './assets/camp_pictures/IMG_4025.png'
+
+import camp7 from './assets/camp_pictures/IMG_4019.png'
+import camp8 from './assets/camp_pictures/IMG_4004.png'
+import camp9 from './assets/camp_pictures/IMG_4007.png'
+import camp10 from './assets/camp_pictures/IMG_4011.png'
+import camp11 from './assets/camp_pictures/IMG_4035.png'
+import camp12 from './assets/camp_pictures/Snímka obrazovky 2026-08-01 185322.png'
+
 
 import flagSK from './assets/flags/sk.webp'
 import flagHU from './assets/flags/hu.webp'
@@ -76,18 +86,18 @@ const languageText = {
 }
 
 const images = [
-  {img: campPlaceholder, alt: 'nieco'},
+  {img: camp1, alt: 'nieco'},
   {img: camp2, alt: 'nieco'},
   {img: camp3, alt: 'nieco'},
   {img: camp4, alt: 'nieco'},
   {img: camp5, alt: 'nieco'},
   {img: camp6, alt: 'nieco'},
-  {img: campPlaceholder, alt: 'nieco'},
-  {img: camp2, alt: 'nieco'},
-  {img: camp3, alt: 'nieco'},
-  {img: camp4, alt: 'nieco'},
-  {img: camp5, alt: 'nieco'},
-  {img: camp6, alt: 'nieco'},
+  {img: camp7, alt: 'nieco'},
+  {img: camp8, alt: 'nieco'},
+  {img: camp9, alt: 'nieco'},
+  {img: camp10, alt: 'nieco'},
+  {img: camp11, alt: 'nieco'},
+  {img: camp12, alt: 'nieco'}
 ]
 
 const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, handleLanguageSelect, isMobile, sections, handleNavClick }) => {
@@ -163,7 +173,7 @@ const Hero = ({ language }) => {
   return (
     <section className='relative w-full h-[312px] lg:h-[504px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 lg:gap-3 scroll-mt-[64px]' id='hero'>
       <div className='bg-blue-800/66 inset-0 absolute -z-1'></div>
-      <img src={campPlaceholder} alt="" className='absolute inset-0 -z-2 w-full h-full object-cover'/>
+      <img src={heroImg} alt="" className='absolute inset-0 -z-2 w-full h-full object-cover'/>
       <h1 className='font-bold text-lg lg:text-4xl'>{languageText[language].hero.header}</h1>
       <p className='text-sm lg:text-xl font-light'>{languageText[language].hero.paragraph}</p>
     </section>
@@ -178,8 +188,8 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
         {images.map((e, i) => {
           return (
             <span className='relative rounded-sm overflow-hidden' key={i}>
-              <button className='absolute inset-0 bg-blue-800/33 opacity-0 hover:opacity-100 cursor-pointer transition focus:opacity-100 focus:outline-none' onClick={() =>  handleLightboxOpen(i)}></button>
-              <img src={e.img} alt="" className='w-full h-full object-cover'/>  
+              <button className='absolute inset-0 bg-blue-800/33 opacity-0 hover:opacity-100 cursor-pointer transition focus:opacity-100 focus:outline-none' onClick={() =>  handleLightboxOpen(i)} aria-label={e.alt + i.toString()}></button>
+              <img src={e.img} alt={e.alt} className='w-full h-full object-cover'/>  
             </span>
           )
         })}
@@ -199,10 +209,10 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
                 <img src={images[imgIndex].img} alt="" className='w-full h-full object-cover'/>
               </div>
               <div className='w-full flex flex-row text-zinc-400 items-center justify-center gap-4 lg:gap-6 lg:text-lg'>
-                <button onClick={() => setImgIndex(p => p == 0 ? 9 : p-1)}>
+                <button onClick={() => setImgIndex(p => p == 0 ? 11 : p-1)}>
                   <FontAwesomeIcon icon={faArrowLeft} className='p-1.5 py-2 bg-zinc-700 rounded-full hover:text-blue-400 transition cursor-pointer'/>
                 </button>
-                <button onClick={() => setImgIndex(p => p == 9 ? 0 : p+1)}>
+                <button onClick={() => setImgIndex(p => p == 11 ? 0 : p+1)}>
                   <FontAwesomeIcon icon={faArrowRight} className='p-1.5 py-2 bg-zinc-700 rounded-full hover:text-blue-400 transition cursor-pointer'/>
                 </button>
               </div>
@@ -213,14 +223,13 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
       <div className='flex justify-center pt-18 lg:px-48'>
         <div className='relative w-full aspect-video'>
           <iframe 
-            src="https://www.youtube.com/embed/NpEaa2P7qZI" 
-            title="video placeholder" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerPolicy="strict-origin-when-cross-origin" 
-            allowFullScreen
-            loading='lazy'
-            className='absolute inset-0 w-full h-full'
+          src="https://www.youtube.com/embed/m4B7nXNl0Ss" 
+          title="yacht-camping-promo" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerPolicy="strict-origin-when-cross-origin" 
+          allowFullScreen
+          loading='lazy'
+          className='absolute inset-0 w-full h-full'
           ></iframe>
         </div>
       </div>
@@ -276,6 +285,7 @@ const Footer = ({ language }) => {
         <div className='relative w-full aspect-video'>
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21430.21820753928!2d18.803142899999997!3d47.8245335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476a890023d8af8b%3A0x130435ac01181746!2zQ2FtcCBDaMS-YWJhLUtvdsOhxI1vdg!5e0!3m2!1ssk!2ssk!4v1785247708408!5m2!1ssk!2ssk"   
+            title="maps"
             loading="lazy" 
             referrerPolicy="strict-origin-when-cross-origin"
             className='absolute inset-0 w-full h-full'
@@ -294,6 +304,8 @@ function App() {
   const [imgIndex, setImgIndex] = useState(0)
 
   const isMobile = useMediaQuery({ maxWidth: 1023 })
+
+  console.log(imgIndex)
 
   useEffect(() => {
     const localLanguage = window.localStorage.getItem("localLanguage");
