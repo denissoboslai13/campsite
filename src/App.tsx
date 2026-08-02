@@ -6,21 +6,21 @@ import Hamburger from './assets/icon-hamburger.svg?react'
 import Close from './assets/icon-close.svg?react'
 import ChevronDown from './assets/icon-chevron-down.svg?react'
 
-import heroImg from './assets/camp_pictures/Snímka obrazovky 2026-08-01 184236.png'
+import heroImg from './assets/camp_pictures/heroImg.webp'
 
-import camp1 from './assets/camp_pictures/IMG_4031.png'
-import camp2 from './assets/camp_pictures/IMG_4027.png'
-import camp3 from './assets/camp_pictures/IMG_4021.png'
-import camp4 from './assets/camp_pictures/IMG_4038.png'
-import camp5 from './assets/camp_pictures/Snímka obrazovky 2026-08-01 185301.png'
-import camp6 from './assets/camp_pictures/IMG_4025.png'
+import camp1 from './assets/camp_pictures/img1.webp'
+import camp2 from './assets/camp_pictures/img2.webp'
+import camp3 from './assets/camp_pictures/img3.webp'
+import camp4 from './assets/camp_pictures/img4.webp'
+import camp5 from './assets/camp_pictures/img5.webp'
+import camp6 from './assets/camp_pictures/img6.webp'
 
-import camp7 from './assets/camp_pictures/IMG_4019.png'
-import camp8 from './assets/camp_pictures/IMG_4004.png'
-import camp9 from './assets/camp_pictures/IMG_4007.png'
-import camp10 from './assets/camp_pictures/IMG_4011.png'
-import camp11 from './assets/camp_pictures/IMG_4035.png'
-import camp12 from './assets/camp_pictures/Snímka obrazovky 2026-08-01 185322.png'
+import camp7 from './assets/camp_pictures/img7.webp'
+import camp8 from './assets/camp_pictures/img8.webp'
+import camp9 from './assets/camp_pictures/img9.webp'
+import camp10 from './assets/camp_pictures/img10.webp'
+import camp11 from './assets/camp_pictures/img11.webp'
+import camp12 from './assets/camp_pictures/img12.webp'
 
 
 import flagSK from './assets/flags/sk.webp'
@@ -33,17 +33,6 @@ import { faLocationDot, faPhone, faEnvelope, faArrowLeft, faArrowRight } from '@
 import { AnimatePresence, motion } from 'motion/react'
 
 const logoText = 'YaCHT CaMPING'
-const tableData = [
-  {
-    items: [
-      { service: 'xyz1', price: '10' },
-      { service: 'xyz2', price: '12' },
-      { service: 'xyz3', price: '15' },
-      { service: 'xyz4', price: '20' },
-      { service: 'xyz5', price: '25' }
-    ]
-  }
-]
 
 const languageDict = 
   {
@@ -59,28 +48,188 @@ const languageText = {
     home: 'Domov',
     hero: { header: 'SK header', paragraph: 'SK paragraph'},
     showcase: { header: 'Galéria' }, 
-    priceList: { header: 'Cenník', table: {service: 'Služba', price: 'Cena', services: null} }, 
+    priceList: { 
+      header: 'Cenník',
+      service: 'Service',
+      price: 'Cena',
+      table: {
+        categories: [
+          {category : {
+            header: 'Stan',
+            services: [
+              {service: '1-2 osoba', price: '10€'},
+              {service: '3-4 osoba', price: '15€'},
+              {service: '6-8 osoba', price: '20€'}
+            ]
+          }},
+          {category: {
+            header: 'Auto Karavan',
+            services: [
+              {service: 'Pri dunaji', price: '30€'},
+              {service: 'Stred časť', price: '20€'},
+              {service: 'Vrchná časť', price: '15€'}
+            ]
+          }}, 
+          {category: {
+            header: 'Mobilný Dom',
+            services: [
+              {service: '4 miestný- s kuchyňou', price: '50€'},
+              {service: '4 miestný- kuchyňa, toaleta, sprcha', price: '60€'},
+              {service: '6 miestný- s kuchyňou', price: '80€'}
+            ]
+          }}
+        ],
+        people: {
+          header: 'Osoby',
+          age: 'Vek',
+          price: 'Cena',
+          prices: [
+            {age: 'nad 18 rokov', price: '6€'},
+            {age: 'nad 14 rokov', price: '4€'},
+          ]
+        },
+    }}, 
     footer: { header: 'Dostupnosť' }
   },
   'HU': {
     home: 'Főoldal',
     hero: { header: 'Üdvözlünk a Yacht-Camping világában', paragraph: 'Ahol vízi kaland és a természetközeli pihenés találkozik!'}, 
     showcase: { header: 'Galéria' }, 
-    priceList: { header: 'Árjegyzék', table: {service: 'Szolgáltatás', price: 'Ár', services: null} }, 
+    priceList: { 
+      header: 'Árjegyzék',
+      service: 'Szolgáltatás',
+      price: 'Ár',
+      table: {
+        categories: [
+          {category : {
+            header: 'Sátor',
+            services: [
+              {service: '1-2 személy', price: '10€'},
+              {service: '3-4 személy', price: '15€'},
+              {service: '6-8 személy', price: '20€'}
+            ]
+          }},
+          {category: {
+            header: 'Lakókocsi',
+            services: [
+              {service: 'Dunánál', price: '30€'},
+              {service: 'középső rész', price: '20€'},
+              {service: 'Felső rész', price: '15€'}
+            ]
+          }}, 
+          {category: {
+            header: 'Mobilház',
+            services: [
+              {service: '4 személyes- konyhával', price: '50€'},
+              {service: '4 személyes- konyha, wc, zuhanyzó', price: '60€'},
+              {service: '6 személyes- konyhával', price: '80€'}
+            ]
+          }}
+        ],
+        people: {
+          header: 'Személy',
+          age: 'Kor',
+          price: 'Ár',
+          prices: [
+            {age: '18 év felett', price: '6€'},
+            {age: '14 év felett', price: '4€'},
+          ]
+        },
+    }},  
     footer: { header: 'Elérhetőségek' }
   },
   'EN': {
     home: 'Home',
     hero: { header: 'EN header', paragraph: 'EN paragraph'}, 
     showcase: { header: 'Gallery' }, 
-    priceList: { header: 'Price List', table: {service: 'Service', price: 'Price', services: null} }, 
+    priceList: { 
+      header: 'Price List',
+      service: 'Service',
+      price: 'Price',
+      table: {
+        categories: [
+          {category : {
+            header: 'Tent',
+            services: [
+              {service: '1-2 person', price: '10€'},
+              {service: '3-4 person', price: '15€'},
+              {service: '6-8 person', price: '20€'}
+            ]
+          }},
+          {category: {
+            header: 'Caravan',
+            services: [
+              {service: 'By the Danube', price: '30€'},
+              {service: 'Middle part', price: '20€'},
+              {service: 'Upper part', price: '15€'}
+            ]
+          }}, 
+          {category: {
+            header: 'Mobile Home',
+            services: [
+              {service: '4 person- with kitchen', price: '50€'},
+              {service: '4 person- kitchen, toilet, shower', price: '60€'},
+              {service: '6 person- with kitchen', price: '80€'}
+            ]
+          }}
+        ],
+        people: {
+          header: 'Person',
+          age: 'Age',
+          price: 'Price',
+          prices: [
+            {age: 'Over 18 years old', price: '6€'},
+            {age: 'Over 14 years old', price: '4€'},
+          ]
+        },
+    }}, 
     footer: { header: 'Contacts' }
   },
   'DE': {
     home: 'Startseite',
     hero: { header: 'DE header', paragraph: 'DE paragraph'}, 
     showcase: { header: 'Galerie' }, 
-    priceList: { header: 'Preisliste', table: {service: 'Service', price: 'Preis', services: null} }, 
+    priceList: { 
+      header: 'Price List',
+      service: 'Service',
+      price: 'Price',
+      table: {
+        categories: [
+          {category : {
+            header: 'Tent',
+            services: [
+              {service: '1-2 person', price: '10€'},
+              {service: '3-4 person', price: '15€'},
+              {service: '6-8 person', price: '20€'}
+            ]
+          }},
+          {category: {
+            header: 'Caravan',
+            services: [
+              {service: 'By the Danube', price: '30€'},
+              {service: 'Middle part', price: '20€'},
+              {service: 'Upper part', price: '15€'}
+            ]
+          }}, 
+          {category: {
+            header: 'Mobile Home',
+            services: [
+              {service: '4 person- with kitchen', price: '50€'},
+              {service: '4 person- kitchen, toilet, shower', price: '60€'},
+              {service: '6 person- with kitchen', price: '80€'}
+            ]
+          }}
+        ],
+        people: {
+          header: 'Person',
+          age: 'Age',
+          price: 'Price',
+          prices: [
+            {age: 'Over 18 years old', price: '6€'},
+            {age: 'Over 14 years old', price: '4€'},
+          ]
+        },
+    }}, 
     footer: { header: 'Kontakte' }
   },
 }
@@ -171,7 +320,7 @@ const Navbar = ({ setNavVis, handleNavClick, navVis, sections }) => {
 
 const Hero = ({ language }) => {
   return (
-    <section className='relative w-full h-[312px] lg:h-[504px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 lg:gap-3 scroll-mt-[64px]' id='hero'>
+    <section className='relative w-full h-[312px] lg:h-[556px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 lg:gap-3 scroll-mt-[64px]' id='hero'>
       <div className='bg-blue-800/66 inset-0 absolute -z-1'></div>
       <img src={heroImg} alt="" className='absolute inset-0 -z-2 w-full h-full object-cover'/>
       <h1 className='font-bold text-lg lg:text-4xl'>{languageText[language].hero.header}</h1>
@@ -237,23 +386,76 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
   )
 }
 
-const PriceList = ({ language }) => {
+const PriceList = ({ language, tableVis, setTableVis }) => {
+
+  const tableData = (languageText[language].priceList)
+  const kategorie = tableData.table.categories
+  console.log('kategorie', tableData.table.people.header)
+
   return (
-    <section className='py-12 pb-36 flex flex-col items-center scroll-mt-[64px]' id='priceList'>
-      <h2 className='font-bold text-[2.5rem] lg:text-[3.2rem] mb-10'>{languageText[language].priceList.header}</h2>
-      <table className='table-auto border-collapse border lg:text-xl'>
+    <section className='py-12 pb-36 px-6 flex flex-col items-center scroll-mt-[64px]' id='priceList'>
+      <h2 className='font-bold text-[2.5rem] lg:text-[3.2rem] mb-14'>{tableData.header}</h2>
+      <div className='flex flex-row gap-6 mb-10 border-b-2 border-t-2 font-medium px-4'>
+        {tableData.table.categories.map((e, i) => (
+            <button onClick={() => setTableVis(i)} className={`${tableVis == i ? "border-b-3 border-blue-600" : "border-b-3 border-white"} cursor-pointer py-4 pt-5`}>
+              {e.category.header}
+            </button>
+        ))}
+      </div>
+      <table className='table-auto border-collapse border lg:text-xl w-full'>
         <thead>
           <tr>
-            <th className='border py-3 p-4 pr-16'>{languageText[language].priceList.table.service}</th>
-            <th className='border py-3 p-4 pr-16'>{languageText[language].priceList.table.price}</th>
+            <th className='border py-4'>{tableData.service}</th>
+            <th className='border py-4'>{tableData.price}</th>
           </tr>
         </thead>
         <tbody>
-          {tableData[0].items.map((item) => (
-            <tr key={item.service}>
-              <td className='border py-3 p-4'>{item.service}</td>
-              <td className='border py-3 p-4'>{item.price}</td>
-            </tr>
+          {tableVis == 0 && (
+            <>
+              {kategorie[0].category.services.map((e, i) => (
+                  <tr>
+                    <td className='border p-4'>{e.service}</td>
+                    <td className='border p-4'>{e.price}</td>
+                  </tr>
+              ))}
+            </>
+          )}
+          {tableVis == 1 && (
+            <>
+              {kategorie[1].category.services.map((e, i) => (
+                  <tr>
+                    <td className='border p-4'>{e.service}</td>
+                    <td className='border p-4'>{e.price}</td>
+                  </tr>
+              ))}
+            </>
+          )}
+          {tableVis == 2 && (
+            <>
+              {kategorie[2].category.services.map((e, i) => (
+                  <tr>
+                    <td className='border p-4'>{e.service}</td>
+                    <td className='border p-4'>{e.price}</td>
+                  </tr>
+              ))}
+            </>
+          )}
+        </tbody>
+      </table>
+      <h3 className='font-bold text-[2rem] lg:text-[3.2rem] mt-14 mb-10 border-b-2 border-t-2 py-2 px-8'>{tableData.table.people.header}</h3>
+      <table className='table-auto border-collapse border lg:text-xl w-full'>
+        <thead>
+          <tr>
+            <th className='border py-4'>{tableData.table.people.age}</th>
+            <th className='border py-4'>{tableData.table.people.price}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.table.people.prices.map((e, i) => (
+              <tr>
+                <td className='border p-4'>{e.age}</td>
+                <td className='border p-4'>{e.price}</td>
+              </tr>
           ))}
         </tbody>
       </table>
@@ -302,6 +504,7 @@ function App() {
   const [languageSelectVis, setLanguageSelectVis] = useState(false)
   const [lightboxVis, setLightboxVis] = useState(false)
   const [imgIndex, setImgIndex] = useState(0)
+  const [tableVis, setTableVis] = useState(0)
 
   const isMobile = useMediaQuery({ maxWidth: 1023 })
 
@@ -350,7 +553,7 @@ function App() {
       </AnimatePresence>
       <Hero language={language} />
       <Showcase language={language} lightboxVis={lightboxVis} setLightboxVis={setLightboxVis} imgIndex={imgIndex} setImgIndex={setImgIndex} handleLightboxOpen={handleLightboxOpen} />
-      <PriceList language={language} />
+      <PriceList language={language} tableVis={tableVis} setTableVis={setTableVis}/>
       <Footer language={language} />
     </main>
   )
