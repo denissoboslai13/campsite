@@ -331,7 +331,7 @@ const Hero = ({ language }) => {
 
 const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex, handleLightboxOpen }) => {
   return (
-    <section className='px-4 lg:px-12 py-20 2xl:py-30 scroll-mt-[64px] text-center md:px-10 xl:px-20 3xl:!px-30' id='showcase'>
+    <section className='px-4 lg:px-12 py-20 2xl:py-25 scroll-mt-[64px] text-center md:px-10 xl:px-20 3xl:!px-30' id='showcase'>
       <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-10 xl:mb-20'>{languageText[language].showcase.header}</h2>
       <div className='grid grid-cols-2 grid-rows-5 lg:grid-cols-3 lg:grid-rows-4 xl:grid-cols-4 xl:grid-rows-3 gap-y-8 gap-x-4'>
         {images.map((e, i) => {
@@ -397,7 +397,7 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
   console.log('kategorie', tableData.table.people.header)
 
   return (
-    <section className='py-12 2xl:py-30 pb-36 px-6 flex flex-col items-center scroll-mt-[64px] md:px-26 lg:px-32 xl:px-70 2xl:px-90' id='priceList'>
+    <section className='py-12 2xl:py-25 pb-36 px-6 flex flex-col items-center scroll-mt-[64px] md:px-26 lg:px-50 xl:px-80 2xl:px-90' id='priceList'>
       <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-14'>{tableData.header}</h2>
       <div className='flex flex-row gap-6 md:gap-10 lg:gap-14 xl:gap-18 mb-10 lg:mb-14 border-b-2 border-t-2 font-medium px-4'>
         {tableData.table.categories.map((e, i) => (
@@ -409,8 +409,8 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
       <table className='table-auto border-collapse border md:text-lg lg:text-xl w-full'>
         <thead className='text-lg md:text-xl lg:text-2xl xl:text-3xl'>
           <tr>
-            <th className='border py-4 lg:py-6 xl:py-8'>{tableData.service}</th>
-            <th className='border py-4 lg:py-6 xl:py-8'>{tableData.price}</th>
+            <th className='border py-4'>{tableData.service}</th>
+            <th className='border py-4'>{tableData.price}</th>
           </tr>
         </thead>
         <tbody>
@@ -418,8 +418,8 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
             <>
               {kategorie[0].category.services.map((e, i) => (
                   <tr>
-                    <td className='border p-4 lg:py-6 xl:py-8'>{e.service}</td>
-                    <td className='border p-4 lg:py-6 xl:py-8'>{e.price}</td>
+                    <td className='border p-4'>{e.service}</td>
+                    <td className='border p-4'>{e.price}</td>
                   </tr>
               ))}
             </>
@@ -428,8 +428,8 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
             <>
               {kategorie[1].category.services.map((e, i) => (
                   <tr>
-                    <td className='border p-4 lg:py-6 xl:py-8'>{e.service}</td>
-                    <td className='border p-4 lg:py-6 xl:py-8'>{e.price}</td>
+                    <td className='border p-4'>{e.service}</td>
+                    <td className='border p-4'>{e.price}</td>
                   </tr>
               ))}
             </>
@@ -438,38 +438,40 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
             <>
               {kategorie[2].category.services.map((e, i) => (
                   <tr>
-                    <td className='border p-4 lg:py-6 xl:py-8'>{e.service}</td>
-                    <td className='border p-4 lg:py-6 xl:py-8'>{e.price}</td>
+                    <td className='border p-4'>{e.service}</td>
+                    <td className='border p-4'>{e.price}</td>
                   </tr>
               ))}
             </>
           )}
         </tbody>
       </table>
-      <h3 className='font-bold text-[2rem] md:text-[2.5rem] lg:text-[3.2rem] xl:text-[3.6rem] mt-14 lg:mt-28 mb-10 lg:mb-14 border-b-2 border-t-2 py-2 px-8'>{tableData.table.people.header}</h3>
-      <table className='table-auto border-collapse border md:text-lg lg:text-xl w-full'>
-        <thead className='text-lg md:text-xl lg:text-2xl xl:text-3xl'>
-          <tr>
-            <th className='border p-4 lg:py-6 xl:py-8'>{tableData.table.people.age}</th>
-            <th className='border p-4 lg:py-6 xl:py-8'>{tableData.table.people.price}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData.table.people.prices.map((e, i) => (
-              <tr>
-                <td className='border p-4 lg:py-6 xl:py-8'>{e.age}</td>
-                <td className='border p-4 lg:py-6 xl:py-8'>{e.price}</td>
-              </tr>
-          ))}
-        </tbody>
-      </table>
+      <h3 className='font-bold text-[2rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3rem] mt-14 lg:mt-28 mb-10 lg:mb-14 border-b-2 border-t-2 py-2 px-8'>{tableData.table.people.header}</h3>
+      <div className='w-full lg:px-20 xl:px-30'>
+        <table className='table-auto border-collapse border md:text-lg lg:text-xl w-full'>
+          <thead className='text-lg md:text-xl lg:text-2xl xl:text-3xl'>
+            <tr>
+              <th className='border p-4'>{tableData.table.people.age}</th>
+              <th className='border p-4'>{tableData.table.people.price}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableData.table.people.prices.map((e, i) => (
+                <tr>
+                  <td className='border p-4'>{e.age}</td>
+                  <td className='border p-4'>{e.price}</td>
+                </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   )
 }
 
 const Footer = ({ language }) => {
   return (
-    <footer className='bg-blue-800 w-full py-12 pt-8 pb-8 px-10 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-10 xl:gap-16 scroll-mt-[64px] text-center md:px-20 lg:px-30 xl:px-45 xl:py-20' id='footer'>
+    <footer className='bg-blue-800 w-full py-12 pt-8 pb-8 px-10 lg:mt-12 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-10 xl:gap-16 scroll-mt-[64px] text-center md:px-20 xl:px-35 2xl:px-45 xl:py-20' id='footer'>
       <div className='flex flex-col gap-10 xl:gap-14 lg:text-center lg:items-center lg:justify-center'>
         <h2 className='font-bold text-[2rem] md:text-[2.3rem] lg:text-[2.6rem] xl:text-[3rem] 2xl:text-[3.3rem] text-white'>{languageText[language].footer.header}</h2>
         <div className='flex flex-col gap-3 xl:gap-5 items-center md:text-lg xl:text-xl 2xl:text-2xl'>
