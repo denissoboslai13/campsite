@@ -320,7 +320,7 @@ const Navbar = ({ setNavVis, handleNavClick, navVis, sections }) => {
 
 const Hero = ({ language }) => {
   return (
-    <section className='relative w-full h-[312px] md:h-[470px] lg:h-[556px] xl:h-[612px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 lg:gap-3 xl:gap-5 scroll-mt-[64px]' id='hero'>
+    <section className='relative w-full h-[312px] md:h-[470px] lg:h-[556px] xl:h-[612px] 3xl:min-h-[756px] text-white flex flex-col items-center justify-center text-center px-6 gap-1 lg:gap-3 xl:gap-5 scroll-mt-[64px]' id='hero'>
       <div className='bg-blue-800/66 inset-0 absolute -z-1'></div>
       <img src={heroImg} alt="" className='absolute inset-0 -z-2 w-full h-full object-cover'/>
       <h1 className='font-bold text-lg md:text-3xl lg:text-4xl xl:text-5xl'>{languageText[language].hero.header}</h1>
@@ -331,8 +331,8 @@ const Hero = ({ language }) => {
 
 const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex, handleLightboxOpen }) => {
   return (
-    <section className='px-4 lg:px-12 py-20 scroll-mt-[64px] text-center md:px-10 xl:px-20' id='showcase'>
-      <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-10'>{languageText[language].showcase.header}</h2>
+    <section className='px-4 lg:px-12 py-20 2xl:py-30 scroll-mt-[64px] text-center md:px-10 xl:px-20 3xl:!px-30' id='showcase'>
+      <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-10 xl:mb-20'>{languageText[language].showcase.header}</h2>
       <div className='grid grid-cols-2 grid-rows-5 lg:grid-cols-3 lg:grid-rows-4 xl:grid-cols-4 xl:grid-rows-3 gap-y-8 gap-x-4'>
         {images.map((e, i) => {
           return (
@@ -373,7 +373,7 @@ const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex
           )}
         </AnimatePresence>
       </div>
-      <div className='flex justify-center pt-18 xl:pt-30 md:px-24 lg:px-40 xl:px-52'>
+      <div className='flex justify-center pt-18 xl:pt-30 md:px-24 lg:px-40 xl:px-52 2xl:px-72'>
         <div className='relative w-full aspect-video'>
           <iframe 
           src="https://www.youtube.com/embed/m4B7nXNl0Ss" 
@@ -397,7 +397,7 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
   console.log('kategorie', tableData.table.people.header)
 
   return (
-    <section className='py-12 pb-36 px-6 flex flex-col items-center scroll-mt-[64px] md:px-26 lg:px-32 xl:px-70 2xl:px-90' id='priceList'>
+    <section className='py-12 2xl:py-30 pb-36 px-6 flex flex-col items-center scroll-mt-[64px] md:px-26 lg:px-32 xl:px-70 2xl:px-90' id='priceList'>
       <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-14'>{tableData.header}</h2>
       <div className='flex flex-row gap-6 md:gap-10 lg:gap-14 xl:gap-18 mb-10 lg:mb-14 border-b-2 border-t-2 font-medium px-4'>
         {tableData.table.categories.map((e, i) => (
@@ -487,7 +487,7 @@ const Footer = ({ language }) => {
           </span>
         </div>
       </div>
-      <div className='flex justify-center lg:w-full lg:ml-24 2xl:ml-95'>
+      <div className='flex justify-center lg:w-full lg:ml-24 3xl:!ml-96'>
         <div className='relative w-full aspect-video border-3 border-white'>
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21430.21820753928!2d18.803142899999997!3d47.8245335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476a890023d8af8b%3A0x130435ac01181746!2zQ2FtcCBDaMS-YWJhLUtvdsOhxI1vdg!5e0!3m2!1ssk!2ssk!4v1785247708408!5m2!1ssk!2ssk"   
