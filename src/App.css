@@ -2,4 +2,55 @@
 
 @theme {
   --breakpoint-3xl: 1728px; 
+  --breakpoint-xs: 400px;
+}
+
+/* big-shoulders-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Big Shoulders';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/fonts/big-shoulders-v4-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* big-shoulders-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Big Shoulders';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/src/assets/fonts/big-shoulders-v4-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* asap-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/src/assets/fonts/asap-v34-latin-ext-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* asap-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/fonts/asap-v34-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* asap-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/src/assets/fonts/asap-v34-latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* asap-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/src/assets/fonts/asap-v34-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
