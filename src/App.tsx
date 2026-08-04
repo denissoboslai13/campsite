@@ -397,7 +397,7 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
   console.log('kategorie', tableData.table.people.header)
 
   return (
-    <section className='py-12 2xl:py-25 pb-36 px-6 flex flex-col items-center scroll-mt-[64px] md:px-26 lg:px-50 xl:px-80 2xl:px-90' id='priceList'>
+    <section className='py-12 2xl:py-25 pb-36 px-6 flex flex-col items-center scroll-mt-[64px] md:px-26 lg:px-50 xl:px-80 2xl:px-90 3xl:!px-120' id='priceList'>
       <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-14'>{tableData.header}</h2>
       <div className='flex flex-row gap-6 md:gap-10 lg:gap-14 xl:gap-18 mb-10 lg:mb-14 border-b-2 border-t-2 font-medium px-4'>
         {tableData.table.categories.map((e, i) => (
@@ -447,7 +447,7 @@ const PriceList = ({ language, tableVis, setTableVis }) => {
         </tbody>
       </table>
       <h3 className='font-bold text-[2rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3rem] mt-14 lg:mt-28 mb-10 lg:mb-14 border-b-2 border-t-2 py-2 px-8'>{tableData.table.people.header}</h3>
-      <div className='w-full lg:px-20 xl:px-30'>
+      <div className='w-full lg:px-20 xl:px-30 3xl:!px-50'>
         <table className='table-auto border-collapse border md:text-lg lg:text-xl w-full'>
           <thead className='text-lg md:text-xl lg:text-2xl xl:text-3xl'>
             <tr>
