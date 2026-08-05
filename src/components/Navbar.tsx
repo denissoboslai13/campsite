@@ -10,7 +10,7 @@ export const Navbar = ({ setNavVis, handleNavClick, navVis, sections }) => {
       exit={{ x: '100%' }}
       transition={{duration: 0.4, ease: 'easeInOut'}}
     >
-      <button onClick={() => setNavVis(false)}>
+      <button onClick={() => setNavVis(false)} aria-label="Close Icon">
         <Close className='text-white'/>
       </button>
       <div className='flex flex-col gap-8 w-full text-white'>

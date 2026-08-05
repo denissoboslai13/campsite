@@ -19,7 +19,7 @@ export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSele
       </div>
       <div className='flex flex-row items-center gap-10 lg:gap-20 relative lg:text-lg'>
         <button className='font-[Asap] flex flex-row items-center gap-1.5 py-1 lg:py-2 px-2 cursor-pointer group' onClick={() => setLanguageSelectVis(p => p == true ? false : true)}>
-          <img src={languageDict[language].flag} alt="" className='w-8'/>
+          <img src={languageDict[language].flag} alt={languageDict[language].language + ' Flag'} className='w-8'/>
           <p className='group-hover:text-blue-800 transition'>{languageDict[language].language}</p>
           <ChevronDown />
         </button>
@@ -32,7 +32,7 @@ export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSele
             >
               {Object.keys(languageDict).filter(p => p !== language).map((e, i) => (
                 <button className='flex flex-row items-center gap-1.5 py-1 px-2 relative group cursor-pointer' key={e} onClick={() => handleLanguageSelect(e)}>
-                  <img src={languageDict[e].flag} alt="" className='w-8'/>
+                  <img src={languageDict[e].flag} alt={languageDict[e].language + ' Flag'} className='w-8'/>
                   <p className='group-hover:text-blue-800 transition'>{languageDict[e].language}</p>
                 </button>
               ))}
@@ -40,7 +40,7 @@ export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSele
           )}
         </AnimatePresence>
         {isMobile && (
-          <button onClick={() => setNavVis(true)}>
+          <button onClick={() => setNavVis(true)} aria-label='Hamburger icon'>
             <Hamburger />
           </button>
         )}

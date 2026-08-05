@@ -3,7 +3,7 @@ import { languageText } from './languageData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-export const Footer = ( language: string ) => {
+export const Footer = ({ language }) => {
   return (
     <footer className='bg-blue-800 w-full py-12 pt-8 pb-8 px-10 lg:mt-12 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-10 xl:gap-16 scroll-mt-[64px] text-center md:px-20 xl:px-35 2xl:px-45 xl:py-20' id='footer'>
       <div className='flex flex-col gap-10 xl:gap-14 lg:text-center lg:items-center lg:justify-center'>

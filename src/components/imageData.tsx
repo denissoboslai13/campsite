@@ -12,16 +12,16 @@ import camp11 from '../assets/camp_pictures/img11.webp'
 import camp12 from '../assets/camp_pictures/img12.webp'
 
 export const images = [
-  {img: camp1, alt: 'nieco'},
-  {img: camp2, alt: 'nieco'},
-  {img: camp3, alt: 'nieco'},
-  {img: camp4, alt: 'nieco'},
-  {img: camp5, alt: 'nieco'},
-  {img: camp6, alt: 'nieco'},
-  {img: camp7, alt: 'nieco'},
-  {img: camp8, alt: 'nieco'},
-  {img: camp9, alt: 'nieco'},
-  {img: camp10, alt: 'nieco'},
-  {img: camp11, alt: 'nieco'},
-  {img: camp12, alt: 'nieco'}
+  {img: camp1, alt: 'Campground Entrance'},
+  {img: camp2, alt: 'Entrance viem from the top'},
+  {img: camp3, alt: 'View of the Danube with some boats'},
+  {img: camp4, alt: 'Walk down to the Danube'},
+  {img: camp5, alt: 'Entrance Signage'},
+  {img: camp6, alt: 'Entrance view from below'},
+  {img: camp7, alt: 'View of the boats'},
+  {img: camp8, alt: 'Wooden mobile house'},
+  {img: camp9, alt: 'Mobile house Smit'},
+  {img: camp10, alt: 'Mobile house with porch'},
+  {img: camp11, alt: 'Danube with caravan in view'},
+  {img: camp12, alt: 'Top down view of the campground'}
 ]
