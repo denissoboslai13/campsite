@@ -50,7 +50,7 @@ export const Footer = ({ language, mapVis, handleMapClick }: Props) => {
               <div className='relative w-full h-full flex group'>
                 <img src={mapPlaceholder} alt="Map placeholder" className='inset-0 absolute w-full h-full z-1'/>
                 <span className='absolute inset-0 z-2 w-full h-full bg-black/50 group-hover:bg-black/67 transition' />
-                <button className='w-full h-full flex flex-col gap-4 z-10 text-[1.5rem] items-center justify-center text-white cursor-pointer' aria-label='Click to load map!' onClick={() => handleMapClick()}>
+                <button className='w-full h-full flex flex-col gap-4 z-10 text-base md:text-[1.5rem] items-center justify-center text-white cursor-pointer' aria-label='Click to load map!' onClick={() => handleMapClick()}>
                   <FontAwesomeIcon icon={faLocationDot} className='text-3xl'/>
                   <p className='font-bold'>{languageText[language].footer.map}</p>
                 </button>
