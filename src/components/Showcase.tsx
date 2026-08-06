@@ -1,16 +1,28 @@
 import { AnimatePresence, motion } from "motion/react"
 
-import { languageText } from "./languageData";
+import { languageText } from "./languageData"
+import type { Language } from "./languageData"
 import { images } from "./imageData"
 
 import thumbPic from '../assets/thumbPic.jpg'
 import Close from '../assets/icon-close.svg?react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight, faCirclePlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faArrowRight, faCirclePlay } from '@fortawesome/free-solid-svg-icons'
 
-export const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex, handleLightboxOpen, vidVis, setVidVis }) => {
+interface Props {
+  language: Language,
+  lightboxVis: boolean,
+  setLightboxVis: (visible: boolean) => void,
+  imgIndex: number,
+  setImgIndex: React.Dispatch<React.SetStateAction<number>>,
+  handleLightboxOpen: (index: number) => void,
+  vidVis: boolean
+  setVidVis: (visible: boolean) => void
+}
+
+export const Showcase = ({ language, lightboxVis, setLightboxVis, imgIndex, setImgIndex, handleLightboxOpen, vidVis, setVidVis }: Props) => {
   return (
-    <section className='px-4 lg:px-12 py-20 2xl:py-25 scroll-mt-[64px] text-center md:px-10 xl:px-20 3xl:!px-30' id='showcase'>
+    <section className='px-4 lg:px-12 py-20 2xl:py-25 scroll-mt-16 text-center md:px-10 xl:px-20 3xl:px-30!' id='showcase'>
       <h2 className='font-bold text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-10 xl:mb-20'>{languageText[language].showcase.header}</h2>
       <div className='grid grid-cols-2 grid-rows-5 lg:grid-cols-3 lg:grid-rows-4 xl:grid-cols-4 xl:grid-rows-3 gap-y-8 gap-x-4'>
         {images.map((e, i) => {

@@ -1,4 +1,6 @@
 import { languageDict } from './languageData'
+import type { Language } from './languageData'
+import type { Section } from './languageData'
 
 import ChevronDown from '../assets/icon-chevron-down.svg?react'
 import Hamburger from '../assets/icon-hamburger.svg?react'
@@ -7,7 +9,18 @@ import { AnimatePresence, motion } from 'motion/react'
 
 const logoText = 'YaCHT CaMPING'
 
-export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, handleLanguageSelect, isMobile, sections, handleNavClick }) => {
+interface Props {
+  setNavVis: (visible: boolean) => void
+  language: Language
+  languageSelectVis: boolean
+  setLanguageSelectVis: React.Dispatch<React.SetStateAction<boolean>>
+  handleLanguageSelect: (language: Language) => void
+  isMobile: boolean
+  sections: Section[]
+  handleNavigationClick: (id: string) => void
+}
+
+export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSelectVis, handleLanguageSelect, isMobile, sections, handleNavigationClick }: Props) => {
   return (
     <header className='sticky top-0 bg-white z-100 w-full flex flex-row items-center justify-between p-4 lg:px-8'>
       <div className='font-["Big_Shoulders"] font-bold -skew-x-7 text-xl lg:text-2xl'>
@@ -25,12 +38,12 @@ export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSele
         </button>
         <AnimatePresence>
           {languageSelectVis && (
-            <motion.div className='absolute top-9 bg-white pb-1.5 pr-[15px] rounded-md overflow-hidden'
+            <motion.div className='absolute top-9 bg-white pb-1.5 pr-3.75 rounded-md overflow-hidden'
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
             >
-              {Object.keys(languageDict).filter(p => p !== language).map((e, i) => (
+              {(Object.keys(languageDict).filter(p => p !== language) as Language[]).map((e) => (
                 <button className='flex flex-row items-center gap-1.5 py-1 px-2 relative group cursor-pointer' key={e} onClick={() => handleLanguageSelect(e)}>
                   <img src={languageDict[e].flag} alt={languageDict[e].language + ' Flag'} className='w-8'/>
                   <p className='group-hover:text-blue-800 transition'>{languageDict[e].language}</p>
@@ -47,7 +60,7 @@ export const Header = ({ setNavVis, language, languageSelectVis, setLanguageSele
         {!(isMobile) && (
           <div className='flex flex-row gap-12 w-full text-black'>
             {sections[0].items.map((e, i) => (
-              <a href={'#' + e.id} key={i} onClick={() => handleNavClick()} className='hover:text-blue-800 transition'>{e.name}</a>
+              <button key={i} onClick={() => handleNavigationClick(e.id)} className='hover:text-blue-800 transition cursor-pointer'>{e.name}</button>
             ))}
           </div>
         )}

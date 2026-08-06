@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { AnimatePresence } from 'motion/react'
 import { HotKeys } from 'react-hotkeys'
+import { Routes, Route } from 'react-router'
 
 import { languageText } from './components/languageData'
 
@@ -12,6 +13,9 @@ import { Hero } from './components/Hero'
 import { Showcase } from './components/Showcase'
 import { PriceList } from './components/PriceList'
 import { Footer } from './components/Footer'
+import { NotFound } from './components/NotFound'
+
+import type { Language } from './components/languageData'
 
 const keyMap = {  
   leftKey: 'left',
@@ -21,12 +25,13 @@ const keyMap = {
 
 function App() {
   const [navVis, setNavVis] = useState(false)
-  const [language, setLanguage] = useState<string>('SK')
+  const [language, setLanguage] = useState<Language>('SK')
   const [languageSelectVis, setLanguageSelectVis] = useState(false)
   const [lightboxVis, setLightboxVis] = useState(false)
   const [imgIndex, setImgIndex] = useState(0)
   const [tableVis, setTableVis] = useState(0)
   const [vidVis, setVidVis] = useState(false)
+  const [mapVis, setMapVis] = useState(false)
 
   const isMobile = useMediaQuery({ maxWidth: 1023 })
 
@@ -52,12 +57,20 @@ function App() {
 
   console.log(imgIndex)
 
+  const isLanguage = (value: string): value is Language => {
+    return ['SK', 'HU', 'EN', 'DE'].includes(value)
+  }
+
   useEffect(() => {
-    const localLanguage = window.localStorage.getItem("localLanguage");
-    if (localLanguage) {
+    const localLanguage = window.localStorage.getItem("localLanguage")
+    if (localLanguage && isLanguage(localLanguage)) {
       setLanguage(localLanguage)
     }
-  }, []);
+    const mapCookies = window.localStorage.getItem("mapCookies")
+    if (mapCookies) {
+      setMapVis(true)
+    }
+  }, [])
 
   useEffect(() => {
   if (lightboxVis) {
@@ -71,14 +84,20 @@ function App() {
   };
 }, [lightboxVis]);
 
-  const handleNavClick = () => {
+  const handleNavigationClick = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setNavVis(false)
   }
 
-  const handleLanguageSelect = ( language: string ) => {
+  const handleLanguageSelect = ( language: Language ) => {
     setLanguage(language)
     setLanguageSelectVis(false)
     window.localStorage.setItem('localLanguage', language)
+  }
+
+  const handleMapClick = () => {
+    setMapVis(true)
+    window.localStorage.setItem('mapCookies', 'true')
   }
 
   const handleLightboxOpen = ( index: number ) => {
@@ -99,18 +118,24 @@ function App() {
 
   return (
     <HotKeys keyMap={keyMap} handlers={handlers}>
-      <main className='min-w-[375px] font-[Asap]'>
-        <Header setNavVis={setNavVis} language={language} languageSelectVis={languageSelectVis} setLanguageSelectVis={setLanguageSelectVis} handleLanguageSelect={handleLanguageSelect} isMobile={isMobile} sections={sections} handleNavClick={handleNavClick}/>
-        <AnimatePresence>
-          {navVis && (
-            <Navbar setNavVis={setNavVis} handleNavClick={handleNavClick} navVis={navVis} sections={sections}/>
-          )}
-        </AnimatePresence>
-        <Hero language={language} />
-        <Showcase language={language} lightboxVis={lightboxVis} setLightboxVis={setLightboxVis} imgIndex={imgIndex} setImgIndex={setImgIndex} handleLightboxOpen={handleLightboxOpen} vidVis={vidVis} setVidVis={setVidVis}/>
-        <PriceList language={language} tableVis={tableVis} setTableVis={setTableVis}/>
-        <Footer language={language} />
-      </main>
+      <Routes>
+        <Route path='/' element={
+          <main className='min-w-93.75 font-[Asap]'>
+            <Header setNavVis={setNavVis} language={language} languageSelectVis={languageSelectVis} setLanguageSelectVis={setLanguageSelectVis} handleLanguageSelect={handleLanguageSelect} isMobile={isMobile} sections={sections} handleNavigationClick={handleNavigationClick}/>
+            <AnimatePresence>
+              {(navVis && isMobile) && (
+                <Navbar setNavVis={setNavVis} handleNavigationClick={handleNavigationClick} sections={sections}/>
+              )}
+            </AnimatePresence>
+            <Hero language={language} />
+            <Showcase language={language} lightboxVis={lightboxVis} setLightboxVis={setLightboxVis} imgIndex={imgIndex} setImgIndex={setImgIndex} handleLightboxOpen={handleLightboxOpen} vidVis={vidVis} setVidVis={setVidVis}/>
+            <PriceList language={language} tableVis={tableVis} setTableVis={setTableVis}/>
+            <Footer language={language} mapVis={mapVis} handleMapClick={handleMapClick} />
+          </main>
+          } />
+          <Route path='*' element={<NotFound />} />
+          <Route path='/prevadzkovy-poriadok' element={<div>cau</div>} />
+      </Routes>
     </HotKeys>
   )
 

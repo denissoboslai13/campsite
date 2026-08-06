@@ -3,14 +3,71 @@ import flagHU from '../assets/flags/hu.webp'
 import flagGB from '../assets/flags/gb.webp'
 import flagDE from '../assets/flags/de.webp'
 
-export const languageDict = {
+export type Language = 'SK' | 'HU' | 'EN' | 'DE'
+
+export const languageDict: Record<Language, { language: string, flag: string }> = {
     'SK': {language: 'SK', flag: flagSK},
     'HU': {language: 'HU', flag: flagHU},
     'EN': {language: 'EN', flag: flagGB},
     'DE': {language: 'DE', flag: flagDE},
   }
 
-export const languageText = {
+interface ServiceEntry {
+  service: string
+  price: string
+}
+
+interface Category {
+  header: string
+  services: ServiceEntry[]
+}
+
+interface PeopleEntry {
+  age: string
+  price: string
+}
+
+interface PriceTable {
+  categories: { category: Category }[]
+  people: {
+    header: string
+    age: string
+    price: string
+    prices: PeopleEntry[]
+  }
+}
+
+interface PriceList {
+  header: string
+  service: string
+  price: string
+  table: PriceTable
+}
+
+interface Hero {
+  header: string
+  paragraph: string
+}
+
+interface Showcase {
+  header: string
+}
+
+interface Footer {
+  header: string,
+  pp: string,
+  map: string
+}
+
+interface LanguageText {
+  home: string
+  hero: Hero
+  showcase: Showcase
+  priceList: PriceList
+  footer: Footer
+}
+
+export const languageText: Record<Language, LanguageText> = {
   'SK': {
     home: 'Domov',
     hero: { header: 'Vitajte vo svete Yacht-Camping', paragraph: 'Miesto, kde sa stretáva vodné dobrodružstvo a relax v blízkosti prírody!'},
@@ -56,7 +113,7 @@ export const languageText = {
           ]
         },
     }}, 
-    footer: { header: 'Dostupnosť' }
+    footer: { header: 'Dostupnosť', pp: 'Prevádzkový Poriadok', map: 'Kliknite pre načítanie mapy!'}
   },
   'HU': {
     home: 'Főoldal',
@@ -103,7 +160,7 @@ export const languageText = {
           ]
         },
     }},  
-    footer: { header: 'Elérhetőségek' }
+    footer: { header: 'Elérhetőségek', pp: 'Üzemeltetési Szabályok', map: 'Kattintson a térkép betöltéséhez!'}
   },
   'EN': {
     home: 'Home',
@@ -150,7 +207,7 @@ export const languageText = {
           ]
         },
     }}, 
-    footer: { header: 'Contacts' }
+    footer: { header: 'Contacts', pp: 'Operating rules', map: 'Click to load map!'}
   },
   'DE': {
     home: 'Startseite',
@@ -197,6 +254,16 @@ export const languageText = {
           ]
         },
     }}, 
-    footer: { header: 'Kontakte' }
+    footer: { header: 'Kontakte', pp: 'nieco', map: 'Click to load map!' }
   },
+}
+
+
+interface SectionItem {
+  id: string
+  name: string
+}
+
+export interface Section {
+  items: SectionItem[]
 }
