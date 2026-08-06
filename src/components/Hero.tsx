@@ -1,5 +1,4 @@
-import heroImg from '../assets/camp_pictures/heroImg.webp'
-
+// import heroImg from '../assets/camp_pictures/heroImg.webp'
 import heroPlaceholder from '../assets/camp_pictures/og-image.png'
 
 import { languageText } from './languageData'
