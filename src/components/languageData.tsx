@@ -1,15 +1,13 @@
 import flagSK from '../assets/flags/sk.webp'
 import flagHU from '../assets/flags/hu.webp'
 import flagGB from '../assets/flags/gb.webp'
-import flagDE from '../assets/flags/de.webp'
 
-export type Language = 'SK' | 'HU' | 'EN' | 'DE'
+export type Language = 'SK' | 'HU' | 'EN'
 
 export const languageDict: Record<Language, { language: string, flag: string }> = {
     'SK': {language: 'SK', flag: flagSK},
     'HU': {language: 'HU', flag: flagHU},
     'EN': {language: 'EN', flag: flagGB},
-    'DE': {language: 'DE', flag: flagDE},
   }
 
 interface ServiceEntry {
@@ -208,54 +206,7 @@ export const languageText: Record<Language, LanguageText> = {
         },
     }}, 
     footer: { header: 'Contacts', pp: 'Operating rules', map: 'Click to load map!'}
-  },
-  'DE': {
-    home: 'Startseite',
-    hero: { header: 'DE header', paragraph: 'DE paragraph'}, 
-    showcase: { header: 'Galerie' }, 
-    priceList: { 
-      header: 'Price List',
-      service: 'Service',
-      price: 'Price',
-      table: {
-        categories: [
-          {category : {
-            header: 'Tent',
-            services: [
-              {service: '1-2 person', price: '10€'},
-              {service: '3-4 person', price: '15€'},
-              {service: '6-8 person', price: '20€'}
-            ]
-          }},
-          {category: {
-            header: 'Caravan',
-            services: [
-              {service: 'By the Danube', price: '30€'},
-              {service: 'Middle part', price: '20€'},
-              {service: 'Upper part', price: '15€'}
-            ]
-          }}, 
-          {category: {
-            header: 'Mobile Home',
-            services: [
-              {service: '4 person- with kitchen', price: '50€'},
-              {service: '4 person- kitchen, toilet, shower', price: '60€'},
-              {service: '6 person- with kitchen', price: '80€'}
-            ]
-          }}
-        ],
-        people: {
-          header: 'Person',
-          age: 'Age',
-          price: 'Price',
-          prices: [
-            {age: 'Over 18 years old', price: '6€'},
-            {age: 'Over 14 years old', price: '4€'},
-          ]
-        },
-    }}, 
-    footer: { header: 'Kontakte', pp: 'nieco', map: 'Click to load map!' }
-  },
+  }
 }
 
 
@@ -266,4 +217,11 @@ interface SectionItem {
 
 export interface Section {
   items: SectionItem[]
+}
+
+export const PPSections = {
+  2: { header: '2. Prevádzková doba', items: ['Areál je otvorený v období od 1. mája do 30. septembra každého roka.', 'Prístup mimo tohto obdobia je možný len so súhlasom prevádzkovateľa.', 'Prevádzková doba: denne od 8:00 do 20:00.', 'Nočný pokoj: od 22:00 do 06:00.']},
+  5: { header: '5. Ochrana zdravia, bezpečnosť a požiarna ochrana', items: ['Otvorený oheň je povolený len na vyznačených miestach.', 'Grilovanie je povolené pri dodržaní bezpečnostných pravidiel', 'Každý je povinný poznať únikové cesty a zásady požiarnej bezpečnosti.', 'Deti do 15 rokov môžu byť v areáli iba v sprievode dospelej osoby.']},
+  6: { header: '6. Zodpovednosť a sankcie', items: ['Prevádzkovateľ nenesie zodpovednosť za škody na osobnom majetku nájomcov a návštevníkov ani za úrazy spôsobené vlastným konaním.', 'Každý nájomca je zodpovedný za škody spôsobené na zariadení areálu.', 'Pri porušení poriadku môže prevádzkovateľ osobe odoprieť vstup do areálu alebo ukončiť jej pobyt bez nároku na vrátenie poplatkov.']},
+  7: { header: '7. Záverečné ustanovenia', items: ['Tento poriadok je záväzný pre všetkých nájomcov a návštevníkov areálu.', 'Poriadok je vyvesený na viditeľnom mieste v areáli a k dispozícii u prevádzkovateľa.', 'Nadobúda účinnosť dňa: 18.06.2025']},
 }

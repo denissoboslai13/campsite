@@ -14,6 +14,7 @@ import { Showcase } from './components/Showcase'
 import { PriceList } from './components/PriceList'
 import { Footer } from './components/Footer'
 import { NotFound } from './components/NotFound'
+import { PP } from './components/PP'
 
 import type { Language } from './components/languageData'
 
@@ -58,7 +59,7 @@ function App() {
   console.log(imgIndex)
 
   const isLanguage = (value: string): value is Language => {
-    return ['SK', 'HU', 'EN', 'DE'].includes(value)
+    return ['SK', 'HU', 'EN'].includes(value)
   }
 
   useEffect(() => {
@@ -134,7 +135,7 @@ function App() {
           </main>
           } />
           <Route path='*' element={<NotFound />} />
-          <Route path='/prevadzkovy-poriadok' element={<div>cau</div>} />
+          <Route path='/prevadzkovy-poriadok' element={<PP />} />
       </Routes>
     </HotKeys>
   )
