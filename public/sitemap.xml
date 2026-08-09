@@ -3,7 +3,11 @@
   <url>
     <loc>https://www.yacht-camping.com/</loc>
     <lastmod>2026-08-09</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.yacht-camping.com/prevadzkovy-poriadok</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.3</priority>
   </url>
 </urlset>
