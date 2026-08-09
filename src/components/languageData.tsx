@@ -63,6 +63,7 @@ interface LanguageText {
   showcase: Showcase
   priceList: PriceList
   footer: Footer
+  pp: string
 }
 
 export const languageText: Record<Language, LanguageText> = {
@@ -111,7 +112,8 @@ export const languageText: Record<Language, LanguageText> = {
           ]
         },
     }}, 
-    footer: { header: 'Dostupnosť', pp: 'Prevádzkový Poriadok', map: 'Kliknite pre načítanie mapy!'}
+    footer: { header: 'Dostupnosť', pp: 'Prevádzkový Poriadok', map: 'Kliknite pre načítanie mapy!'},
+    pp: 'Naspäť'
   },
   'HU': {
     home: 'Főoldal',
@@ -158,7 +160,8 @@ export const languageText: Record<Language, LanguageText> = {
           ]
         },
     }},  
-    footer: { header: 'Elérhetőségek', pp: 'Üzemeltetési Szabályok', map: 'Kattintson a térkép betöltéséhez!'}
+    footer: { header: 'Elérhetőségek', pp: 'Üzemeltetési Szabályok', map: 'Kattintson a térkép betöltéséhez!'},
+    pp: 'Vissza'
   },
   'EN': {
     home: 'Home',
@@ -205,7 +208,8 @@ export const languageText: Record<Language, LanguageText> = {
           ]
         },
     }}, 
-    footer: { header: 'Contacts', pp: 'Operating rules', map: 'Click to load map!'}
+    footer: { header: 'Contacts', pp: 'Operating rules', map: 'Click to load map!'},
+    pp: 'Back'
   }
 }
 

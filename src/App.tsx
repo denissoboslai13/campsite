@@ -135,7 +135,7 @@ function App() {
           </main>
           } />
           <Route path='*' element={<NotFound />} />
-          <Route path='/prevadzkovy-poriadok' element={<PP />} />
+          <Route path='/prevadzkovy-poriadok' element={<PP language={language}/>} />
       </Routes>
     </HotKeys>
   )

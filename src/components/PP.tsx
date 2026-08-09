@@ -1,6 +1,14 @@
+import { Link } from "react-router"
+
+import { languageText } from "./languageData"
+import type { Language } from "./languageData"
 import { PPSections } from "./languageData"
 
-export const PP = () => {
+interface Props {
+    language: Language
+}
+
+export const PP = ({ language }: Props) => {
     return (
         <main className="min-w-93.75 p-6 font-[Asap] text-sm lg:text-base lg:p-10">
             <h1 className="text-2xl lg:text-4xl text-blue-700 border-b pb-4">Prevádzkový poriadok</h1>
@@ -124,6 +132,11 @@ export const PP = () => {
                     ))}
                 </ol>
             </section>
+            <div className="w-full flex items-center justify-center pt-10">
+                <Link to="/" className='underline text-xl text-black'>
+                    <p>{languageText[language].pp}</p>
+                </Link>
+            </div>
         </main>
     )
 }
