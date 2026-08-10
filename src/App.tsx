@@ -17,6 +17,7 @@ import { NotFound } from './components/NotFound'
 import { PP } from './components/PP'
 
 import type { Language } from './components/languageData'
+import { JsonLd } from './components/JsonLd'
 
 const keyMap = {  
   leftKey: 'left',
@@ -122,6 +123,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <main className='min-w-93.75 font-[Asap]'>
+            <JsonLd />
             <Header setNavVis={setNavVis} language={language} languageSelectVis={languageSelectVis} setLanguageSelectVis={setLanguageSelectVis} handleLanguageSelect={handleLanguageSelect} isMobile={isMobile} sections={sections} handleNavigationClick={handleNavigationClick}/>
             <AnimatePresence>
               {(navVis && isMobile) && (
