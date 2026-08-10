@@ -108,7 +108,7 @@ export const languageText: Record<Language, LanguageText> = {
           price: 'Cena',
           prices: [
             {age: 'nad 18 rokov', price: '6 €'},
-            {age: 'nad 14 rokov', price: '4 €'},
+            {age: 'nad 14 rokov', price: '3 €'},
           ]
         },
     }}, 
@@ -156,7 +156,7 @@ export const languageText: Record<Language, LanguageText> = {
           price: 'Ár',
           prices: [
             {age: '18 év felett', price: '6 €'},
-            {age: '14 év felett', price: '4 €'},
+            {age: '14 év felett', price: '3 €'},
           ]
         },
     }},  
@@ -204,7 +204,7 @@ export const languageText: Record<Language, LanguageText> = {
           price: 'Price',
           prices: [
             {age: 'Over 18 years old', price: '6 €'},
-            {age: 'Over 14 years old', price: '4 €'},
+            {age: 'Over 14 years old', price: '3 €'},
           ]
         },
     }}, 

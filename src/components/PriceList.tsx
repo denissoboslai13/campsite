@@ -63,25 +63,30 @@ export const PriceList = ({ language, tableVis, setTableVis }: Props) => {
           )}
         </tbody>
       </table>
-      <h3 className='font-bold text-[2rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3rem] mt-14 lg:mt-28 mb-10 lg:mb-14 border-b-2 border-t-2 py-2 px-8'>{tableData.table.people.header}</h3>
-      <div className='w-full lg:px-20 xl:px-30 3xl:px-50!'>
-        <table className='table-auto border-collapse border md:text-lg lg:text-xl w-full'>
-          <thead className='text-lg md:text-xl lg:text-2xl xl:text-3xl'>
-            <tr>
-              <th className='border p-4'>{tableData.table.people.age}</th>
-              <th className='border p-4'>{tableData.table.people.price}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.table.people.prices.map((e) => (
+      {!(tableVis == 2) && (
+        <>
+          <h3 className='font-bold text-[2rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3rem] mt-14 lg:mt-28 mb-10 lg:mb-14 border-b-2 border-t-2 py-2 px-8'>{tableData.table.people.header}</h3>
+          <div className='w-full lg:px-20 xl:px-30 3xl:px-50!'>
+            <table className='table-auto border-collapse border md:text-lg lg:text-xl w-full'>
+              <thead className='text-lg md:text-xl lg:text-2xl xl:text-3xl'>
                 <tr>
-                  <td className='border p-4'>{e.age}</td>
-                  <td className='border p-4'>{e.price}</td>
+                  <th className='border p-4'>{tableData.table.people.age}</th>
+                  <th className='border p-4'>{tableData.table.people.price}</th>
                 </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                {tableData.table.people.prices.map((e) => (
+                    <tr>
+                      <td className='border p-4'>{e.age}</td>
+                      <td className='border p-4'>{e.price}</td>
+                    </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+      
     </section>
   )
 }
