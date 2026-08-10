@@ -120,10 +120,10 @@ function App() {
 
   return (
     <HotKeys keyMap={keyMap} handlers={handlers}>
+      <JsonLd />
       <Routes>
         <Route path='/' element={
           <main className='min-w-93.75 font-[Asap]'>
-            <JsonLd />
             <Header setNavVis={setNavVis} language={language} languageSelectVis={languageSelectVis} setLanguageSelectVis={setLanguageSelectVis} handleLanguageSelect={handleLanguageSelect} isMobile={isMobile} sections={sections} handleNavigationClick={handleNavigationClick}/>
             <AnimatePresence>
               {(navVis && isMobile) && (
